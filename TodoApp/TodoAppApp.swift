@@ -1,8 +1,19 @@
-//
-//  TodoAppApp.swift
-//  TodoApp
-//
-//  Created by macos on 12/11/2026.
-//
+import SwiftUI
+import FirebaseCore
 
-import Foundation
+@main
+struct TodoAppApp: App {
+    @StateObject private var authVM: AuthViewModel
+
+    init() {
+        FirebaseApp.configure()
+        _authVM = StateObject(wrappedValue: AuthViewModel())
+    }
+
+    var body: some Scene {
+        WindowGroup {
+            RootView()
+                .environmentObject(authVM)
+        }
+    }
+}

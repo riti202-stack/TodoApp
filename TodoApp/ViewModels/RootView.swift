@@ -1,8 +1,16 @@
-//
-//  RootView.swift
-//  TodoApp
-//
-//  Created by macos on 12/11/2026.
-//
+import SwiftUI
 
-import Foundation
+struct RootView: View {
+    @EnvironmentObject var authVM: AuthViewModel
+
+    var body: some View {
+        Group {
+            if authVM.user != nil {
+                TaskListView()
+            } else {
+                AuthView()
+            }
+        }
+        .animation(.default, value: authVM.user?.uid)
+    }
+}
