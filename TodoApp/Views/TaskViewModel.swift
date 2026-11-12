@@ -2,6 +2,8 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+import FirebaseFirestoreSwift
+
 @MainActor
 final class TaskViewModel: ObservableObject {
     @Published var tasks: [TodoTask] = []
